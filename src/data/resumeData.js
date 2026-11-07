@@ -18,7 +18,7 @@ export const profile = {
   stats: [
     { label: 'IBM Z ADVOCACY RANK', value: '#9 GLOBAL' },
     { label: 'ADVOCACY POINTS', value: '225' },
-    { label: 'WORLDQUANT BRAIN', value: 'BRONZE LEVEL' },
+    { label: 'WORLDQUANT BRAIN', value: 'SILVER LEVEL' },
     { label: 'GRADUATED', value: '2025' },
     { label: 'CGPA', value: '7.02' },
   ],
