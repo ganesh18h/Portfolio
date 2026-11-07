@@ -7,9 +7,34 @@ import VerifiedOutlinedIcon from '@mui/icons-material/VerifiedOutlined'
 import FlagOutlinedIcon from '@mui/icons-material/FlagOutlined'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import FieldLabel from './FieldLabel'
-import { achievements } from '../data/resumeData'
+import * as data from '../data/resumeData'
 
 const MONO = "'IBM Plex Mono', monospace"
+
+// the data file has `achievements` (badges, milestones...) and, separately,
+// `certifications`. reading both this way means the page still loads if one is missing
+const { achievements: baseAchievements = [], certifications = [] } = data
+
+// finds the certificate link whatever the field is called (same idea as Education.jsx)
+const LINK_KEYS = ['url', 'link', 'credentialUrl', 'credential', 'href', 'certificate', 'pdf', 'file', 'src']
+const looksLikeLink = (v) => typeof v === 'string' && (/^https?:\/\//i.test(v) || /\.(pdf|png|jpe?g|webp)$/i.test(v))
+const linkOf = (c) => {
+  const raw = LINK_KEYS.map((k) => c[k]).find(looksLikeLink) || Object.values(c).find(looksLikeLink)
+  if (!raw) return ''
+  if (/^https?:\/\//i.test(raw)) return raw
+  return `${import.meta.env.BASE_URL}${raw.replace(/^\/+/, '')}`
+}
+
+// turn every certification into a tile of type "certificate", so the
+// `certificate` filter shows ALL of them. anything already listed in
+// achievements under the same name is skipped, so nothing shows twice
+const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]/g, '')
+const achievements = [
+  ...baseAchievements,
+  ...certifications
+    .filter((c) => !baseAchievements.some((a) => norm(a.title) === norm(c.name)))
+    .map((c) => ({ type: 'certificate', title: c.name, issuer: c.issuer, date: '', detail: c.detail, url: linkOf(c) })),
+]
 
 // each achievement has a `type` - this maps it to a small icon + label.
 // anything with an unknown type is treated as a milestone
@@ -148,7 +173,7 @@ export default function Achievements() {
                       </Typography>
 
                       <Typography sx={{ fontFamily: MONO, fontSize: '0.68rem', color: 'secondary.main', mt: 'auto' }}>
-                        {a.issuer} · {a.date}
+                        {[a.issuer, a.date].filter(Boolean).join(' · ')}
                       </Typography>
                     </Box>
                   </Tooltip>
