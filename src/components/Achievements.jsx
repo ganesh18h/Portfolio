@@ -1,4 +1,5 @@
-import { Box, Container, Grid, Typography } from '@mui/material'
+import { useMemo, useState } from 'react'
+import { Box, Container, Grid, Typography, Tooltip } from '@mui/material'
 import { motion } from 'framer-motion'
 const MotionDiv = motion.div
 import WorkspacePremiumOutlinedIcon from '@mui/icons-material/WorkspacePremiumOutlined'
@@ -8,106 +9,149 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import FieldLabel from './FieldLabel'
 import { achievements } from '../data/resumeData'
 
-// each achievement is tagged with a `type` - this maps that to a small icon + label
-// shown at the top of the card, so badges/certs/milestones are visually distinct
-// even as the list grows
+const MONO = "'IBM Plex Mono', monospace"
+
+// each achievement has a `type` - this maps it to a small icon + label.
+// anything with an unknown type is treated as a milestone
 const TYPE_META = {
   badge: { label: 'badge', icon: WorkspacePremiumOutlinedIcon },
   certificate: { label: 'certificate', icon: VerifiedOutlinedIcon },
   milestone: { label: 'milestone', icon: FlagOutlinedIcon },
 }
+const typeOf = (a) => (TYPE_META[a.type] ? a.type : 'milestone')
 
-// achievements section - a grid of cards for badges, certificates, and milestones.
-// built to scale: adding a new badge is just one object in resumeData.js,
-// this component doesn't need to change as the list grows
+// compact achievements wall.
+// - the filter bar is a fake terminal command: click a word to "grep" by type
+// - each tile is only ~3 lines tall; the long description shows in a tooltip
+//   (hover on desktop, tap on mobile) instead of taking up space on the page
+// adding a new item is still just one object in resumeData.js
 export default function Achievements() {
+  const [filter, setFilter] = useState('all')
+
+  // only offer filters for types that actually exist in the data
+  const filters = useMemo(() => ['all', ...Object.keys(TYPE_META).filter((t) => achievements.some((a) => typeOf(a) === t))], [])
+  const shown = filter === 'all' ? achievements : achievements.filter((a) => typeOf(a) === filter)
+
   return (
     <Box id="achievements" sx={{ py: { xs: 8, md: 12 }, borderTop: '1px solid', borderColor: 'divider' }}>
       <Container maxWidth="lg">
         <FieldLabel>achievements</FieldLabel>
-        <Grid container spacing={2.5}>
-          {achievements.map((a, idx) => {
-            const meta = TYPE_META[a.type] || TYPE_META.milestone
-            const Icon = meta.icon
+
+        {/* terminal-style filter bar */}
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            alignItems: 'center',
+            gap: { xs: 0.8, sm: 1.2 },
+            mb: 2.5,
+            fontFamily: MONO,
+            fontSize: { xs: '0.78rem', sm: '0.85rem' },
+          }}
+        >
+          <Box component="span" sx={{ color: 'secondary.main' }}>
+            ganesh@portfolio
+          </Box>
+          <Box component="span" sx={{ color: 'text.secondary', ml: -0.8 }}>
+            :~$ ls achievements/ | grep
+          </Box>
+          {filters.map((f) => {
+            const active = f === filter
             return (
-              <Grid item xs={12} sm={6} md={4} key={a.title}>
+              <Box
+                key={f}
+                component="button"
+                type="button"
+                onClick={() => setFilter(f)}
+                aria-pressed={active}
+                sx={{
+                  all: 'unset',
+                  cursor: 'pointer',
+                  fontFamily: MONO,
+                  fontSize: 'inherit',
+                  px: 1,
+                  py: 0.2,
+                  borderRadius: '2px',
+                  border: '1px solid',
+                  borderColor: active ? 'primary.main' : 'divider',
+                  color: active ? 'primary.main' : 'text.secondary',
+                  transition: 'all 0.15s ease',
+                  '&:hover': { color: 'primary.main' },
+                  '&:focus-visible': { outline: '1px solid', outlineColor: 'primary.main' },
+                }}
+              >
+                {f}
+              </Box>
+            )
+          })}
+          <Box component="span" sx={{ color: 'text.secondary', ml: 'auto', fontSize: '0.75rem' }}>
+            {shown.length} found
+          </Box>
+        </Box>
+
+        <Grid container spacing={1.5}>
+          {shown.map((a, idx) => {
+            const meta = TYPE_META[typeOf(a)]
+            const Icon = meta.icon
+            const linkProps = a.url ? { component: 'a', href: a.url, target: '_blank', rel: 'noopener noreferrer' } : {}
+            return (
+              <Grid item xs={12} sm={6} md={3} key={a.title}>
                 <MotionDiv
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.45, delay: idx * 0.05 }}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: idx * 0.04 }}
                   style={{ height: '100%' }}
                 >
-                  <Box
-                    sx={{
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      border: '1px solid',
-                      borderColor: 'divider',
-                      borderRadius: '4px',
-                      bgcolor: 'background.paper',
-                      p: { xs: 2.25, md: 2.5 },
-                      transition: 'border-color 0.15s ease',
-                      '&:hover': { borderColor: a.url ? 'primary.main' : 'divider' },
-                    }}
-                  >
-                    {/* type tag - badge / certificate / milestone */}
-                    <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.7, mb: 1.5 }}>
-                      <Icon sx={{ fontSize: '1rem', color: 'primary.main' }} />
+                  <Tooltip title={a.detail || ''} arrow placement="top" enterTouchDelay={0}>
+                    <Box
+                      {...linkProps}
+                      sx={{
+                        height: '100%',
+                        minHeight: 104,
+                        boxSizing: 'border-box',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: 0.6,
+                        p: 1.6,
+                        border: '1px solid',
+                        borderColor: 'divider',
+                        borderRadius: '4px',
+                        bgcolor: 'background.paper',
+                        textDecoration: 'none',
+                        transition: 'border-color 0.15s ease, transform 0.15s ease',
+                        '&:hover': { borderColor: 'primary.main', transform: 'translateY(-2px)' },
+                      }}
+                    >
+                      <Box sx={{ display: 'flex', alignItems: 'center', gap: 0.6 }}>
+                        <Icon sx={{ fontSize: '0.9rem', color: 'primary.main' }} />
+                        <Typography
+                          sx={{ fontFamily: MONO, fontSize: '0.64rem', letterSpacing: '0.1em', color: 'primary.main', textTransform: 'uppercase' }}
+                        >
+                          {meta.label}
+                        </Typography>
+                        {a.url && <OpenInNewIcon sx={{ fontSize: '0.8rem', color: 'text.secondary', ml: 'auto' }} />}
+                      </Box>
+
                       <Typography
                         sx={{
-                          fontFamily: "'IBM Plex Mono', monospace",
-                          fontSize: '0.68rem',
-                          letterSpacing: '0.1em',
-                          color: 'primary.main',
-                          textTransform: 'uppercase',
+                          fontWeight: 600,
+                          color: 'text.primary',
+                          fontSize: '0.88rem',
+                          lineHeight: 1.3,
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
                         }}
                       >
-                        {meta.label}
+                        {a.title}
+                      </Typography>
+
+                      <Typography sx={{ fontFamily: MONO, fontSize: '0.68rem', color: 'secondary.main', mt: 'auto' }}>
+                        {a.issuer} · {a.date}
                       </Typography>
                     </Box>
-
-                    <Typography sx={{ fontWeight: 600, color: 'text.primary', fontSize: '0.98rem', lineHeight: 1.35, mb: 0.6 }}>
-                      {a.title}
-                    </Typography>
-
-                    <Typography sx={{ fontSize: '0.8rem', color: 'secondary.main', mb: 1 }}>
-                      {a.issuer} · {a.date}
-                    </Typography>
-
-                    <Typography sx={{ fontSize: '0.82rem', color: 'text.secondary', lineHeight: 1.55, flexGrow: 1 }}>
-                      {a.detail}
-                    </Typography>
-
-                    {/* only shows if this achievement has something to link to - external credential or local PDF */}
-                    {a.url && (
-                      <Box
-                        component="a"
-                        href={a.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        sx={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: 0.5,
-                          mt: 2,
-                          pt: 1.5,
-                          borderTop: '1px solid',
-                          borderColor: 'divider',
-                          fontFamily: "'IBM Plex Mono', monospace",
-                          fontSize: '0.76rem',
-                          color: 'secondary.main',
-                          textDecoration: 'none',
-                          width: 'fit-content',
-                          '&:hover': { opacity: 0.8 },
-                        }}
-                      >
-                        view_credential()
-                        <OpenInNewIcon sx={{ fontSize: '0.85rem !important' }} />
-                      </Box>
-                    )}
-                  </Box>
+                  </Tooltip>
                 </MotionDiv>
               </Grid>
             )
