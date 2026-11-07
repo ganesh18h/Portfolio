@@ -238,12 +238,12 @@ export const achievements = [
     url: `${import.meta.env.BASE_URL}WorldQuant_Challenge_Bronze_Certificate.pdf`,
   },
   {
-  type: 'badge',
-  title: 'WorldQuant Challenge® — Silver Level',
-  issuer: 'WorldQuant BRAIN',
-  date: '2026',
-  detail: 'Reached Silver Level in the WorldQuant Challenge®. Certificate presented by WorldQuant.',
-  url: `${import.meta.env.BASE_URL}WorldQuant_Silver_Certificate.pdf`,
+    type: 'badge',
+    title: 'WorldQuant Challenge® — Silver Level',
+    issuer: 'WorldQuant BRAIN',
+    date: '2026',
+    detail: 'Reached Silver Level in the WorldQuant Challenge®. Certificate presented by WorldQuant.',
+    url: `${import.meta.env.BASE_URL}WorldQuant_Silver_Certificate.pdf`,
   },
   {
     type: 'badge',
