@@ -1,7 +1,7 @@
 export const profile = {
   name: 'Ganesh Dussa',
   role: 'Software Developer',
-  focus: 'LLM Agents & Mainframe Modernization (learning)',
+  focus: 'Teaching mainframes new AI tricks (learning!)',
   location: 'Hyderabad, India',
   phone: '+91 8179504819',
   email: 'ganeshdussa20@gmail.com',
@@ -10,11 +10,11 @@ export const profile = {
   blog: 'https://medium.com/@ganeshdussa20',
   
   shortSummary:
-    "I work at the intersection of mainframe engineering and modern AI. From COBOL and JCL on z/OS to Java, Python, and LLM-based systems, I focus on solving problems across technology generations. Currently exploring agentic engineering and modern tooling for z/OS bringing automation, intelligence, and developer experience to systems built long before today's AI era.",
+    "I live where mainframes meet modern AI. COBOL and JCL on z/OS? Yep. Java, Python and LLM agents? Also yep. I love teaching old-school systems new tricks, and right now I'm poking at agentic engineering and fresh tooling for z/OS, so machines built long before anyone said 'prompt engineering' can finally chat back.",
 
   summary:
-    "Software developer with hands-on experience across Java, Python, AI, and IBM Z technologies. I build and experiment with software across application development, AI, and enterprise systems. My Java work includes JavaFX applications and a cosine-similarity based plagiarism detection system. In Python, I've developed LLM-powered tools focused on practical automation and document processing. On IBM z/OS, I work with COBOL, JCL, DB2, and VSAM, including end-to-end batch processing and job execution. Alongside development, I contribute to the IBM Z community through technical writing and my involvement in the IBM Z Advocacy Program. I'm also exploring LLM agents, Zowe, and modern approaches to connecting mainframe environments with contemporary developer tooling. Outside of core development, I'm exploring quantitative research through WorldQuant BRAIN — building and testing alpha signals as a way to sharpen my data and statistical thinking. My focus is on building reliable software, understanding systems at a deeper level, and continuously working across technologies that solve real engineering problems.",
-  
+    "Software developer fluent in Java, Python, AI and IBM Z, so basically a polyglot who speaks both 'curly braces' and 'column 7 of a COBOL card'. I build things across application development, AI and enterprise systems. On the Java side: JavaFX apps and a cosine-similarity plagiarism detector that sniffs out copy-paste like a bloodhound. In Python: LLM-powered tools that automate the boring stuff and wrangle documents so you don't have to. On IBM z/OS: COBOL, JCL, DB2 and VSAM, including end-to-end batch pipelines from job submit all the way to a satisfying RC=0. I also hang out in the IBM Z community, writing technical articles and contributing through the IBM Z Advocacy Program. Lately I'm exploring LLM agents, Zowe, and ways to introduce mainframes to modern developer tooling (they get along better than you'd think). On the side, I'm exploring quantitative research on WorldQuant BRAIN, building and testing alpha signals to sharpen my data and statistical thinking. Bottom line: I like reliable software, knowing how things work under the hood, and hopping between technologies to solve real engineering problems.",
+
   stats: [
     { label: 'IBM Z ADVOCACY RANK', value: '#9 GLOBAL' },
     { label: 'ADVOCACY POINTS', value: '225' },
@@ -34,7 +34,7 @@ export const resumeBuilds = [
   {
     id: 'mainframe',
     filename: 'Ganesh_Dussa_Mainframe_Resume.pdf',
-    tag: 'stable · production-grade',
+    tag: 'stable · has seen things',
     stack: 'COBOL · JCL · DB2 · VSAM',
   },
 ]
@@ -47,10 +47,10 @@ export const experience = [
     location: 'Remote',
     period: 'Jun 2026 — Oct 2026',
     bullets: [
-      'Shipped 5+ front-end features to the live company website using JavaScript, HTML, and CSS, working closely with a cross-functional development team.',
-      'Integrated a payment gateway module into the website, enabling secure online transactions and streamlining the checkout flow for end users.',
-      'Built responsive UI components as part of a 4-person team, improving site functionality and delivering a consistent user experience across devices.',
-      'Delivered iterative website updates in 2-week Agile sprints, using Git-based version control and peer code reviews to maintain code quality.',
+      'Shipped 5+ front-end features to the live company website (JavaScript, HTML, CSS) alongside a cross-functional team. Real users, real clicks, nowhere to hide.',
+      'Wired a payment gateway into the website so money moves securely and checkout stops feeling like an escape room.',
+      'Built responsive UI components with a 4-person team, so the site looks good on everything from a phone to a "why is your monitor that big" display.',
+      'Lived in 2-week Agile sprints: Git, peer code reviews and small iterative releases, with code quality kept intact.',
     ],
   },
 ]
@@ -59,44 +59,44 @@ export const experience = [
 export const projects = [
   {
     name: 'Mainframe Batch Processing & DB2 Operations',
-    tagline: 'End-to-end COBOL/JCL batch pipeline on IBM z/OS',
+    tagline: 'COBOL + JCL batch pipeline on IBM z/OS: old-school, still cool',
     stack: ['COBOL', 'JCL', 'DB2', 'VSAM'],
     bullets: [
-      'Developed COBOL programs on IBM z/OS including PERFORM loops, COMP variables, 88-level condition names, and structured file I/O across VSAM (KSDS/ESDS) and non-VSAM (PS) datasets.',
-      'Designed and executed multi-step JCL jobs for dataset allocation, sorting, merging, and file processing using IEBGENER, SORT, and IDCAMS to build fully functional batch pipelines.',
-      'Managed DB2 tables with 50+ test records, performing Load/Unload operations and writing embedded SQL queries via SPUFI — achieving 100% verified data integrity across all output files.',
-      'Bridged legacy COBOL business logic with Java-based application layers, and documented the full development journey in a widely read Medium technical article.',
+      'Wrote COBOL programs on IBM z/OS with PERFORM loops, COMP variables, 88-level condition names and structured file I/O across VSAM (KSDS/ESDS) and non-VSAM (PS) datasets.',
+      'Designed and ran multi-step JCL jobs that allocate, sort, merge and process datasets using IEBGENER, SORT and IDCAMS, turning a pile of files into a working batch pipeline.',
+      'Managed DB2 tables with 50+ test records, ran Load/Unload operations and wrote embedded SQL via SPUFI, with 100% verified data integrity across all output files. Every record accounted for.',
+      'Bridged legacy COBOL business logic with Java-based application layers (old meets new) and wrote up the whole journey in a widely read Medium technical article.',
     ],
   },
   {
     name: 'Resume Tailor',
-    tagline: 'JD-aware resume automation, powered by an LLM',
+    tagline: 'Your resume, now with actual awareness of the job description',
     stack: ['Python', 'NLP', 'Gemini API', 'PDF / DOCX Parsing', 'Git'],
     url: 'https://ai-resume-optimizer-eight.vercel.app/',
     bullets: [
-      'Built an end-to-end automation tool that removes manual resume editing — users upload a job description and existing resume, and the system instantly identifies matched and missing keywords.',
-      'Implemented keyword extraction and comparison logic using NLP techniques, surfacing matched (green) and missing (red) keywords side-by-side.',
-      'Designed an interactive selection step where chosen missing keywords are sent to an LLM API, which regenerates the resume with the keywords woven in naturally — preserving structure and formatting in under 5 seconds.',
+      'Built an end-to-end automation tool that kills manual resume editing: upload a job description and your resume, and it instantly shows which keywords match and which are missing.',
+      'Implemented keyword extraction and comparison with NLP techniques, showing matched (green) and missing (red) keywords side-by-side, like a traffic light for your resume.',
+      'Designed an interactive step where you pick the missing keywords, an LLM API weaves them in naturally, and your original structure and formatting survive. All in under 5 seconds.',
     ],
   },
   {
     name: 'Plagiarism Checker Tool',
-    tagline: 'Similarity scoring engine for text documents',
+    tagline: 'A bloodhound for copy-pasted text',
     stack: ['Java', 'Cosine Similarity', 'Text Processing', 'OOPs'],
     bullets: [
-      'Built a Java tool that compares two text documents and returns a similarity percentage, helping surface copied content quickly.',
-      'Pre-processed input by stripping punctuation, lowercasing and tokenizing text to keep similarity results accurate and consistent.',
-      'Applied the Cosine Similarity algorithm to measure document closeness and validated results against manually calculated expected values.',
+      'Built a Java tool that compares two text documents and returns a similarity percentage, so copied content gets caught fast.',
+      'Pre-processed input by stripping punctuation, lowercasing and tokenizing the text, so results stay accurate and consistent (no sneaky commas allowed).',
+      'Applied the Cosine Similarity algorithm to measure how close two documents really are, and checked results against hand-calculated expected values. Math, but verified.',
     ],
   },
   {
     name: 'Employee Payroll Management System',
-    tagline: 'Desktop payroll app with a JavaFX GUI',
+    tagline: 'Desktop payroll app with a JavaFX GUI, because paychecks should add up',
     stack: ['Java', 'JavaFX'],
     bullets: [
-      'Built a desktop payroll application using Java with a JavaFX-based GUI for employee salary data input and display.',
-      'Automated salary calculation logic for gross pay, net pay, overtime, and deductions using arithmetic and conditional logic.',
-      'Implemented input validation to reduce incorrect data entries before salary processing.',
+      'Built a desktop payroll application in Java with a JavaFX GUI for entering and viewing employee salary data.',
+      'Automated gross pay, net pay, overtime and deductions with arithmetic and conditional logic, so nobody has to do payroll math by hand.',
+      'Added input validation to catch bad entries before they turn into bad paychecks.',
     ],
   },
 ]
@@ -167,50 +167,50 @@ export const certifications = [
   {
     name: 'Goldman Sachs Engineering Virtual Experience',
     issuer: 'Forage, 2025',
-    detail: 'Applied Agile methodology, Git-based version control, and SDLC phases in a real-world engineering simulation.',
+    detail: 'Practiced Agile, Git and the full SDLC in a real-world engineering simulation. Dress rehearsal for the real thing.',
   },
   {
     name: 'SQL Certification',
     issuer: 'Great Learning',
-    detail: 'Queries, joins, subqueries, stored procedures, and DBMS normalization concepts.',
+    detail: 'Queries, joins, subqueries, stored procedures and DBMS normalization. Tables, but make them behave.',
   },
   {
     name: 'Core Java Programming Certification',
     issuer: 'Self-directed',
-    detail: 'Java SE, OOPs (all 4 pillars), Collections Framework, Exception Handling, and Multithreading.',
+    detail: 'Java SE, all 4 OOP pillars, Collections, Exception Handling and Multithreading. Many threads, zero tangles.',
   },
   {
     name: 'Generative AI Fundamentals',
     issuer: 'Coursera, 2025',
-    detail: 'Introduction to large language models, prompt engineering techniques, and AI application development using LLM APIs.',
+    detail: 'How large language models think, how to prompt them well, and how to build apps on LLM APIs.',
   },
   {
     name: 'IBM Mainframe Fundamentals',
     issuer: 'Self-directed',
-    detail: 'JCL syntax and execution, COBOL program structure, and DB2 relational database management concepts.',
+    detail: 'JCL syntax and execution, COBOL program structure and DB2 concepts. The mainframe starter pack.',
   },
   {
     name: 'Claude 101',
     issuer: 'Anthropic Academy',
-    detail: 'Foundations of working with Claude — core capabilities, use cases, and best practices for everyday use.',
+    detail: 'Foundations of working with Claude: what it can do, where it shines and how to use it well every day.',
     url: 'https://verify.skilljar.com/c/yzy2ynh2727i',
   },
   {
     name: 'AI Fluency: Framework & Foundations',
     issuer: 'Anthropic Academy',
-    detail: 'Core framework for working effectively and responsibly with AI systems like Claude.',
+    detail: 'A framework for working with AI effectively and responsibly, so humans stay firmly in charge.',
     url: 'https://verify.skilljar.com/c/aemsasomwy74',
   },
   {
     name: 'Claude with the Anthropic API',
     issuer: 'Anthropic Academy',
-    detail: 'Building applications on the Anthropic API — messages, tool use, and integrating Claude into software.',
+    detail: 'Building on the Anthropic API: messages, tool use and plugging Claude into real software.',
     url: 'https://verify.skilljar.com/c/y5f2pms8397b',
   },
   {
     name: 'Introduction to Model Context Protocol',
     issuer: 'Anthropic Academy',
-    detail: 'Fundamentals of MCP — connecting Claude to external tools, data sources, and services.',
+    detail: 'MCP fundamentals: giving Claude a toolbox, a library card and a phone book.',
     url: 'https://verify.skilljar.com/c/dtwckuuqk4u9',
   },
 ]
@@ -227,14 +227,14 @@ export const achievements = [
     title: 'IBM Z Advocacy Hub — Global Rank #9',
     issuer: 'IBM Z Advocacy Program',
     date: 'Q1 2026',
-    detail: 'Earned 225 Advocacy Points through active contribution to the IBM Z & LinuxONE community.',
+    detail: 'Earned 225 Advocacy Points by showing up and contributing to the IBM Z & LinuxONE community.',
   },
   {
     type: 'badge',
     title: 'WorldQuant Challenge® — Gold Level',
     issuer: 'WorldQuant BRAIN',
     date: '2026',
-    detail: 'Reached Gold Level in the WorldQuant Challenge®, progressing from Bronze and Silver. Certificate presented by WorldQuant.',
+    detail: 'Reached Gold Level in the WorldQuant Challenge®, climbing from Bronze to Silver to Gold. Certificate presented by WorldQuant.',
     url: `${import.meta.env.BASE_URL}WorldQuant_Challenge_Gold_Certificate.pdf`,
   },
   {
@@ -242,7 +242,7 @@ export const achievements = [
     title: 'WorldQuant Challenge® — Silver Level',
     issuer: 'WorldQuant BRAIN',
     date: '2026',
-    detail: 'Reached Silver Level in the WorldQuant Challenge®. Certificate presented by WorldQuant.',
+    detail: 'Reached Silver Level in the WorldQuant Challenge®. The stop on the way to Gold. Certificate presented by WorldQuant.',
     url: `${import.meta.env.BASE_URL}WorldQuant_Silver_Certificate.pdf`,
   },
   {
@@ -250,7 +250,7 @@ export const achievements = [
     title: 'Enterprise COBOL Programming with VSCode',
     issuer: 'IBM',
     date: '2026',
-    detail: 'Verified digital badge for enterprise COBOL development using VS Code tooling on IBM Z.',
+    detail: 'Verified badge for enterprise COBOL in VS Code on IBM Z. Yes, COBOL in a modern editor.',
     url: 'https://www.credly.com/badges/6e6fd30a-282a-4063-8289-b91897e7419f/public_url',
   },
   {
@@ -258,7 +258,7 @@ export const achievements = [
     title: 'IBM Z Xplore — Concepts',
     issuer: 'IBM',
     date: '2026',
-    detail: 'Verified digital badge covering foundational IBM Z and mainframe systems concepts.',
+    detail: 'Verified badge covering IBM Z and mainframe fundamentals. Welcome to the big iron.',
     url: 'https://www.credly.com/badges/c909440a-bb34-4f6a-b83e-4fca7f0fd603/public_url',
   },
   {
@@ -266,7 +266,7 @@ export const achievements = [
     title: 'IBM Digital Badge — Community Contributor (Level 1)',
     issuer: 'IBM',
     date: '2026',
-    detail: 'Awarded by IBM for the IBM Z and LinuxONE Community Contributor program.',
+    detail: 'Awarded by IBM for contributing to the IBM Z and LinuxONE community. Gold-star energy.',
     url: 'https://www.credly.com/badges/7e24b0e3-369f-4eef-b071-ba9105c575de/public_url',
   },
   {
@@ -274,7 +274,7 @@ export const achievements = [
     title: 'IBM Digital Badge — Community Contributor (Level 2)',
     issuer: 'IBM',
     date: '2026',
-    detail: 'Awarded by IBM for the IBM Z and LinuxONE Community Contributor program.',
+    detail: 'Awarded by IBM for contributing to the IBM Z and LinuxONE community. Gold-star energy.',
     url: 'https://www.credly.com/badges/8736164e-5bde-4e7c-8589-834c3757ddda',
   },
   {
@@ -282,7 +282,7 @@ export const achievements = [
     title: 'Technical Writer, Medium',
     issuer: 'Self-published',
     date: 'Ongoing',
-    detail: 'Writing about mainframe development — enterprise batch processing on IBM z/OS, and my own journey into mainframe engineering.',
+    detail: 'Writing about mainframes: enterprise batch processing on IBM z/OS and my own journey into mainframe engineering.',
     url: 'https://medium.com/@ganeshdussa20',
   },
 ]
