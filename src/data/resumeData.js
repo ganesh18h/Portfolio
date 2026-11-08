@@ -18,7 +18,7 @@ export const profile = {
   stats: [
     { label: 'IBM Z ADVOCACY RANK', value: '#9 GLOBAL' },
     { label: 'ADVOCACY POINTS', value: '225' },
-    { label: 'WORLDQUANT BRAIN', value: 'SILVER LEVEL' },
+    { label: 'WORLDQUANT BRAIN', value: 'GOLD LEVEL' },
     { label: 'GRADUATED', value: '2025' },
     { label: 'CGPA', value: '7.02' },
   ],
@@ -45,12 +45,12 @@ export const experience = [
     company: 'Mad Sensei Studios',
     role: 'Software Developer Intern',
     location: 'Remote',
-    period: 'Jun 2026 — Present',
+    period: 'Jun 2026 — Oct 2026',
     bullets: [
-      'Shipped 5+ front-end features across the company website using JavaScript, HTML and CSS as part of a cross-functional development team.',
+      'Shipped 5+ front-end features to the live company website using JavaScript, HTML, and CSS, working closely with a cross-functional development team.',
       'Integrated a payment gateway module into the website, enabling secure online transactions and streamlining the checkout flow for end users.',
-      'Collaborated with a 4-person team to build responsive UI components, improving site functionality and user experience across devices.',
-      'Followed Agile practices, Git-based version control and code review workflows within 2-week sprint cycles to deliver iterative updates.',
+      'Built responsive UI components as part of a 4-person team, improving site functionality and delivering a consistent user experience across devices.',
+      'Delivered iterative website updates in 2-week Agile sprints, using Git-based version control and peer code reviews to maintain code quality.',
     ],
   },
 ]
@@ -230,12 +230,12 @@ export const achievements = [
     detail: 'Earned 225 Advocacy Points through active contribution to the IBM Z & LinuxONE community.',
   },
   {
-    type: 'certificate',
-    title: 'WorldQuant Challenge — Bronze Level',
+    type: 'badge',
+    title: 'WorldQuant Challenge® — Gold Level',
     issuer: 'WorldQuant BRAIN',
     date: '2026',
-    detail: 'Reached Bronze status in the WorldQuant Challenge, unlocking additional Alpha Examples. On track toward Silver at 5,000 points.',
-    url: `${import.meta.env.BASE_URL}WorldQuant_Challenge_Bronze_Certificate.pdf`,
+    detail: 'Reached Gold Level in the WorldQuant Challenge®, progressing from Bronze and Silver. Certificate presented by WorldQuant.',
+    url: `${import.meta.env.BASE_URL}WorldQuant_Challenge_Gold_Certificate.pdf`,
   },
   {
     type: 'badge',
